@@ -1,0 +1,117 @@
+@import '@theme/variables';
+@import '@theme/mixins';
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@top-offset: 115%;
+
+.menu-base() {
+    margin: 0;
+    width: 100%;
+    animation: slideIn @animation-duration @animation-cubic-bezier;
+    border-radius: @border-radius;
+    background-color: #ffffff;
+    padding: @spacing-unit;
+    gap: 0.5em;
+    .box-shadow();
+
+    @media (min-width: @breakpoint-medium) {
+        width: auto;
+    }
+}
+
+.menu-item-base() {
+    position: relative;
+    padding: 1em;
+    border: none;
+    color: @text-color;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: @border-radius;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+    gap: 1em;
+    justify-content: space-between;
+    .transition(background-color);
+}
+
+.container {
+    position: relative;
+}
+
+.button {
+    text-transform: uppercase;
+    border-radius: @border-radius;
+    border: none;
+    padding: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    .box-shadow();
+    .transition(box-shadow);
+
+    &:hover {
+        .box-shadow-hover();
+    }
+
+    &:active {
+        box-shadow: none;
+    }
+}
+
+.menu,
+.sub-menu {
+    .menu-base();
+}
+
+.menu-item,
+.sub-menu-item {
+    .menu-item-base();
+}
+
+.menu {
+    position: absolute;
+    top: @top-offset;
+
+    @media (min-width: @breakpoint-medium) {
+        position: fixed;
+        top: 96%;
+    }
+}
+
+.sub-menu {
+    position: absolute;
+    top: @top-offset;
+    width: auto;
+    min-width: 100%;
+    z-index: @z-layer-dropdown-nesting;
+
+    @media (min-width: @breakpoint-medium) {
+        left: 100%;
+        top: 0;
+    }
+}
+
+each(@ibu-color, {
+    .container-@{index} {
+        .button,
+        .selected,
+        .menu-item:hover,
+        .menu-item:active,
+        .sub-menu-item:hover,
+        .sub-menu-item:active {
+            background-color: @value;
+            color: contrast(@value);
+        }
+    }
+});

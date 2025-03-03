@@ -1,0 +1,50 @@
+@import '@theme/variables.less';
+@import '@theme/mixins.less';
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: @spacing-unit * 2;
+    background-color: @background-color;
+    color: @text-color;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: @spacing-unit * 3;
+    padding-bottom: @spacing-unit * 2;
+    border-bottom: 1px solid @border-color;
+}
+
+.title {
+    color: @primary-color;
+    margin: 0;
+}
+
+.theme-red {
+    @import '@theme/themes/red.less';
+}
+
+.theme-green {
+    @import '@theme/themes/green.less';
+}
+
+.themeToggle {
+    padding: @spacing-unit @spacing-unit * 2;
+    background-color: @secondary-color;
+    color: white;
+    border: none;
+    border-radius: @border-radius;
+    cursor: pointer;
+
+    &:hover {
+        .box-shadow();
+        transform: translateY(-2px);
+    }
+}
+
+.main {
+    padding: @spacing-unit * 2 0;
+}

@@ -1,0 +1,48 @@
+@import './variables.less';
+
+.box-shadow() {
+    box-shadow:
+        rgba(@primary-color, 0.4) 0 2px 4px,
+        rgba(@primary-color, 0.3) 0 7px 13px -3px,
+        rgba(@primary-color, 0.2) 0 -3px 0 inset;
+}
+
+.box-shadow-hover() {
+    box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.text-shadow() {
+    text-shadow: 1px 1px 1px rgba(@primary-color, 0.3);
+}
+
+.responsive-grid(@portraitColumns, @landscapeColumns, @minColumnWidth: 150px) {
+    display: grid;
+    gap: @spacing-unit * 2;
+    grid-template-columns: repeat(1, 1fr);
+
+    @supports (grid-template-columns: repeat(auto-fit, minmax(min(@minColumnWidth, 100%), 1fr))) {
+        grid-template-columns: repeat(auto-fit, minmax(min(@minColumnWidth, 100%), 1fr));
+    }
+
+    @media (min-width: @breakpoint-medium) and (orientation: portrait) {
+        grid-template-columns: repeat(@portraitColumns, 1fr);
+    }
+
+    @media (min-width: @breakpoint-medium) and (orientation: landscape) {
+        grid-template-columns: repeat(@landscapeColumns, 1fr);
+    }
+}
+
+.circle(@size: 1em) {
+    width: @size;
+    height: @size;
+    border-radius: 50%;
+}
+
+.transition(@props: all, @duration: @animation-duration, @timing: ease) {
+    transition-property: @props;
+    transition-duration: @duration;
+    transition-timing-function: @timing;
+}

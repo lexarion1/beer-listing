@@ -1,0 +1,36 @@
+{
+    "name": "ccmedia-homew",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage",
+        "lint": "eslint 'src/**/*.{js,ts}'",
+        "lint:fix": "eslint 'src/**/*.{js,ts}' --fix",
+        "lint:style": "stylelint 'src/**/*.less'",
+        "lint:style:fix": "stylelint 'src/**/*.less' --fix",
+        "format": "prettier --write 'src/**/*.{js,ts,less,html}'"
+    },
+    "devDependencies": {
+        "@testing-library/dom": "10.4.0",
+        "@types/node": "^22.13.5",
+        "@vitejs/plugin-legacy": "^6.0.2",
+        "@webcomponents/webcomponentsjs": "^2.8.0",
+        "eslint": "9.21.0",
+        "eslint-config-prettier": "10.0.2",
+        "happy-dom": "17.1.8",
+        "less": "4.2.2",
+        "prettier": "3.5.2",
+        "stylelint": "16.14.1",
+        "stylelint-less": "3.0.1",
+        "typescript": "5.7.3",
+        "vite": "6.2.0",
+        "vite-tsconfig-paths": "^5.1.4",
+        "vitest": "3.0.7"
+    }
+}
