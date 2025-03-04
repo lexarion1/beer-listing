@@ -1,17 +1,6 @@
 @import '@theme/variables';
 @import '@theme/mixins';
 
-@keyframes slideIn {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
 @top-offset: 115%;
 
 .menu-base() {
@@ -22,6 +11,7 @@
     background-color: #ffffff;
     padding: @spacing-unit;
     gap: 0.5em;
+    .slideIn(-100%);
     .box-shadow();
 
     @media (min-width: @breakpoint-medium) {
