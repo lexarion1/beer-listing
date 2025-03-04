@@ -17,6 +17,9 @@
         "lint:style:fix": "stylelint 'src/**/*.less' --fix",
         "format": "prettier --write 'src/**/*.{js,ts,less,html}'"
     },
+    "dependencies": {
+        "serve": "14.2.4"
+    },
     "devDependencies": {
         "@testing-library/dom": "10.4.0",
         "@types/node": "^22.13.5",
