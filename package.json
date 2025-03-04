@@ -7,7 +7,7 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "serve-heroku": "vite --host 0.0.0.0 --port $PORT preview",
+        "serve-heroku": "serve -s dist",
         "test": "vitest run",
         "test:watch": "vitest",
         "test:coverage": "vitest run --coverage",
