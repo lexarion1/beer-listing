@@ -12,7 +12,7 @@ vi.mock('*.module.less', () => ({
 
                 return undefined;
             },
-        }
+        },
     ),
 }));
 
@@ -23,5 +23,5 @@ vi.stubGlobal(
         observe: vi.fn(),
         takeRecords: vi.fn(),
         unobserve: vi.fn(),
-    }))
+    })),
 );

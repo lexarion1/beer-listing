@@ -20,7 +20,7 @@ describe('EventManager', () => {
                     detail,
                     bubbles: true,
                     composed: true,
-                })
+                }),
             );
         });
 
@@ -35,10 +35,9 @@ describe('EventManager', () => {
                     type: eventName,
                     bubbles: true,
                     composed: true,
-                })
+                }),
             );
         });
-
     });
 
     describe('subscribe', () => {

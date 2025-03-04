@@ -23,14 +23,6 @@
     margin: 0;
 }
 
-.theme-red {
-    @import '@theme/themes/red.less';
-}
-
-.theme-green {
-    @import '@theme/themes/green.less';
-}
-
 .themeToggle {
     padding: @spacing-unit @spacing-unit * 2;
     background-color: @secondary-color;
@@ -47,4 +39,18 @@
 
 .main {
     padding: @spacing-unit * 2 0;
+}
+
+.error,
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    .slideIn();
+
+    & > img {
+        max-height: 10em;
+    }
 }

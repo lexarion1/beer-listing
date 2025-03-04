@@ -70,7 +70,7 @@ describe('Dropdown', () => {
                 ({
                     observe: observeMock,
                     disconnect: disconnectMock,
-                }) as any
+                }) as any,
         );
 
         dropdown.connectedCallback();

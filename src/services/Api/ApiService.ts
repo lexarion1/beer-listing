@@ -17,7 +17,7 @@ export class ApiService {
                     .then((data) => data.record)
                     .then(resolve)
                     .catch(reject);
-            }, 1000)
+            }, 1000),
         );
     }
 }

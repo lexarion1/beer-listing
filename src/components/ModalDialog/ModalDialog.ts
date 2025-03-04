@@ -20,7 +20,7 @@ export class ModalDialog extends HTMLElement {
 
             EventManager.subscribe(EventManager.EVENTS.MODAL.CLOSE, () => {
                 this.handleClose();
-            })
+            }),
         );
     }
 

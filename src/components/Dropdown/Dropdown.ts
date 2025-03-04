@@ -121,38 +121,29 @@ export class Dropdown extends HTMLElement {
                 <menuitem class="${styles.subMenuItem}" data-count="${count}">
                     <span>${count}</span>
                 </menuitem>
-            `
+            `,
             )
             .join('');
         return subMenu;
     }
 
     private adjustPosition(element: HTMLElement) {
-        const adjust = () => {
-            const rect = element.getBoundingClientRect();
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
 
-            // Check if element extends beyond right edge
-            if (rect.right > viewportWidth) {
-                element.style.left = `-${rect.right - viewportWidth}px`;
-            }
+        // Reset position first
+        element.style.left = '';
+        element.style.top = '';
 
-            // Check if element extends beyond bottom edge
-            if (rect.bottom > viewportHeight) {
-                element.style.top = `-${rect.bottom - viewportHeight}px`;
-            }
-        };
+        const updatedRect = element.getBoundingClientRect();
 
-        requestAnimationFrame(() => {
-            const animations = element.getAnimations();
+        if (updatedRect.right > viewportWidth) {
+            element.style.left = `${viewportWidth - updatedRect.right - 10}px`;
+        }
 
-            if (animations.length) {
-                element.addEventListener('animationend', adjust, { once: true });
-            } else {
-                adjust();
-            }
-        });
+        if (updatedRect.bottom > viewportHeight) {
+            element.style.top = `${viewportHeight - updatedRect.bottom - 10}px`;
+        }
     }
 
     private handleSelection(count: string) {
@@ -176,7 +167,7 @@ export class Dropdown extends HTMLElement {
                 <menuitem class="${styles.menuItem}" data-item="${item}">
                     <span>${item}</span> <i class="fa fa-chevron-right"></i>
                 </menuitem>
-            `
+            `,
             )
             .join('');
 

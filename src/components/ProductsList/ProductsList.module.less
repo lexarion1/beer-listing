@@ -16,18 +16,6 @@
     padding: @spacing-unit * 2;
     background-color: fade(@background-color, 50%);
     grid-auto-rows: 1fr;
-    animation: slideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    .slideIn();
     .responsive-grid(4, 7);
-}
-
-.error,
-.loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: slideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-    & > img {
-        max-height: 10em;
-    }
 }
