@@ -1,7 +1,7 @@
 import '@components/ProductsList/ProductsList';
 import '@components/ModalDialog/ModalDialog';
 import { ApiService } from '@services/Api/ApiService';
-import { ProductsList } from '@components/ProductsList/ProductsList.ts';
+import { ProductsList } from '@components/ProductsList/ProductsList';
 import { Product } from '@interfaces';
 import styles from './App.module.less';
 
