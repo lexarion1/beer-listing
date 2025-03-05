@@ -61,7 +61,10 @@
     align-items: center;
 
     img {
-        max-height: 10em;
+        @height: 10em;
+
+        height: @height;
+        max-height: @height;
         max-width: 100%;
     }
 }
