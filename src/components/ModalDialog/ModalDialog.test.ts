@@ -39,8 +39,6 @@ describe('ModalDialog', () => {
 
     it('should close modal when receiving MODAL.CLOSE event', () => {
         EventManager.dispatch(EventManager.EVENTS.MODAL.OPEN, mockProduct);
-
-        // Then close it
         EventManager.dispatch(EventManager.EVENTS.MODAL.CLOSE);
 
         expect((modalDialog as any).isOpen).toBe(false);

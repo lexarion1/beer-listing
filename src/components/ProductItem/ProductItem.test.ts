@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { ProductItem } from './ProductItem';
 import { EventManager } from '@services/EventManager/EventManager';
-import styles from './ProductItem.module.less';
 
 describe('ProductItem', () => {
     let productItem: ProductItem;
@@ -33,15 +32,12 @@ describe('ProductItem', () => {
         expect(productItem.innerHTML).toContain('Test Beer');
         expect(productItem.innerHTML).toContain('5.5%');
         expect(productItem.innerHTML).toContain('IBU: 30');
-        expect(productItem.innerHTML).toContain('http://example.com/beer.jpg');
 
-        // Check image loader and image presence
-        const imageLoader = productItem.querySelector(`.${styles.imageLoader}`);
-        const image = productItem.querySelector(`.${styles.image}`);
-
-        expect(imageLoader).not.toBeNull();
-        expect(image).not.toBeNull();
-        expect(image?.classList.contains(styles.hidden)).toBe(true);
+        // Check image component is properly configured
+        const imageComponent = productItem.querySelector('image-component');
+        expect(imageComponent).not.toBeNull();
+        expect(imageComponent?.getAttribute('src')).toBe('http://example.com/beer.jpg');
+        expect(imageComponent?.getAttribute('alt')).toBe('Test Beer');
     });
 
     it('should update render when data changes', () => {
@@ -65,9 +61,11 @@ describe('ProductItem', () => {
 
         productItem.data = mockProduct1;
         expect(productItem.innerHTML).toContain('Beer 1');
+        expect(productItem.querySelector('image-component')?.getAttribute('src')).toBe('http://example.com/beer1.jpg');
 
         productItem.data = mockProduct2;
         expect(productItem.innerHTML).toContain('Beer 2');
+        expect(productItem.querySelector('image-component')?.getAttribute('src')).toBe('http://example.com/beer2.jpg');
     });
 
     it('should apply correct CSS classes based on IBU', () => {
@@ -105,48 +103,5 @@ describe('ProductItem', () => {
         productItem.click();
 
         expect(dispatchSpy).toHaveBeenCalledWith(EventManager.EVENTS.MODAL.OPEN, mockProduct);
-    });
-
-    it('should show image and hide loader when image loads', () => {
-        productItem.data = {
-            id: 1,
-            description: 'A test beer',
-            name: 'Test Beer',
-            abv: 5.5,
-            ibu: 30,
-            image_url: 'http://example.com/beer.jpg',
-        };
-
-        const img = productItem.querySelector(`.${styles.image}`) as HTMLImageElement;
-        const loader = productItem.querySelector(`.${styles.imageLoader}`) as HTMLElement;
-
-        // Simulate image load event
-        const loadEvent = new Event('load');
-        img.dispatchEvent(loadEvent);
-
-        expect(img.classList.contains(styles.hidden)).toBe(false);
-        expect(loader.classList.contains(styles.hidden)).toBe(true);
-    });
-
-    it('should use placeholder and hide loader when image fails to load', () => {
-        productItem.data = {
-            id: 1,
-            description: 'A test beer',
-            name: 'Test Beer',
-            abv: 5.5,
-            ibu: 30,
-            image_url: 'http://example.com/beer.jpg',
-        };
-
-        const img = productItem.querySelector(`.${styles.image}`) as HTMLImageElement;
-        const loader = productItem.querySelector(`.${styles.imageLoader}`) as HTMLElement;
-
-        // Simulate image error event
-        const errorEvent = new Event('error');
-        img.dispatchEvent(errorEvent);
-
-        expect(img.classList.contains(styles.hidden)).toBe(false);
-        expect(loader.classList.contains(styles.hidden)).toBe(true);
-        expect(img.src).toContain('error.png');
     });
 });

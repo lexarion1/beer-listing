@@ -1,4 +1,5 @@
 import '@components/Dropdown/Dropdown';
+import '@components/Image/Image';
 import { EventManager } from '@services/EventManager/EventManager';
 import { Product } from '@interfaces';
 import styles from './ModalDialog.module.less';
@@ -56,7 +57,8 @@ export class ModalDialog extends HTMLElement {
                         <div class="${styles.media}">
                             <div class="${styles.face}">
                                 <div class="${styles.faceInternal}">
-                                    <img class="${styles.image}" src="${this.product.image_url}" alt="${this.product.name}" />
+                                    <image-component src="${this.product.image_url}" alt="${this.product.name}">
+                                    </image-component>
                                     <span class="${styles.ibu}">
                                         <span>IBU</span>
                                         <span>${this.product.ibu}</span>

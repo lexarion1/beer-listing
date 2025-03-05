@@ -1,3 +1,4 @@
+import '@components/Image/Image';
 import { Product } from '@interfaces';
 import { EventManager } from '@services/EventManager/EventManager';
 import styles from './ProductItem.module.less';
@@ -17,27 +18,6 @@ export class ProductItem extends HTMLElement {
         });
     }
 
-    private addImageListeners() {
-        const img = this.querySelector(`.${styles.image}`) as HTMLImageElement;
-        const loader = this.querySelector(`.${styles.imageLoader}`) as HTMLElement;
-
-        if (img) {
-            img.addEventListener('load', () => {
-                img.classList.remove(`${styles.hidden}`);
-                loader.classList.add(`${styles.hidden}`);
-            });
-
-            img.addEventListener('error', () => {
-                if (loader) {
-                    loader.classList.add(`${styles.hidden}`);
-                }
-
-                img.src = 'error.png';
-                img.classList.remove(`${styles.hidden}`);
-            });
-        }
-    }
-
     private render() {
         if (!this.item) {
             return;
@@ -48,16 +28,11 @@ export class ProductItem extends HTMLElement {
                 <div class="${styles.badge}">
                     <span class="${styles.badgeValue}">${this.item.abv}%</span>
                 </div>
-                <div class="${styles.imageContainer}">
-                    <img class="${styles.imageLoader}" src="loading.gif" alt="loader">
-                    <img class="${styles.image} ${styles.hidden}" src="${this.item.image_url}" alt="${this.item.name}">
-                </div>
+                <image-component src="${this.item.image_url}" alt="${this.item.name}"></image-component>
                 <div class="${styles.tag}">IBU: ${this.item.ibu}</div>
                 <div class="${styles.name}">${this.item.name}</div>
             </div>
         `;
-
-        this.addImageListeners();
     }
 }
 
