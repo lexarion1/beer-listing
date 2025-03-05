@@ -21,12 +21,9 @@ describe('Image Component', () => {
     });
 
     it('should render with provided attributes', () => {
-        // First set attributes
         imageComponent.setAttribute('src', 'test-image.jpg');
         imageComponent.setAttribute('alt', 'Test Image');
 
-        // Force the attributeChangedCallback manually
-        // since we're testing before the component implementation is complete
         (imageComponent as any).attributeChangedCallback('src', '', 'test-image.jpg');
 
         expect(imageComponent.querySelector(`.${styles.imageContainer}`)).toBeTruthy();
