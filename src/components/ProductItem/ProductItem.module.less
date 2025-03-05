@@ -54,19 +54,23 @@
     z-index: @z-layer-item;
 }
 
-.image {
-    flex: 1;
+.image-container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
-    img {
-        @height: 10em;
+.image,
+.image-loader {
+    @height: 10em;
 
-        height: @height;
-        max-height: @height;
-        max-width: 100%;
-    }
+    height: @height;
+    max-height: @height;
+    max-width: 100%;
+}
+
+.hidden {
+    display: none;
 }
 
 .tag {
