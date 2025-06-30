@@ -1,4 +1,4 @@
-## CCM Homework
+## Beer listing
 
 ## DEMO: https://ccm-homework-56bd482409eb.herokuapp.com/
 
