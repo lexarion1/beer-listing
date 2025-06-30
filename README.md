@@ -1,6 +1,6 @@
 ## Beer listing
 
-## DEMO: https://ccm-homework-56bd482409eb.herokuapp.com/
+## DEMO: https://beer-listing-81f55d0a87a3.herokuapp.com
 
 ## Prerequisite
 * Install LTS node
