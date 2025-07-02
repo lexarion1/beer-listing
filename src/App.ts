@@ -50,7 +50,7 @@ export class App extends HTMLElement {
         this.innerHTML = `
             <div class="${styles.container}">
                 <header class="${styles.header}">
-                    <h1 class="${styles.title}">Homework App</h1>
+                    <h1 class="${styles.title}">Beer listing</h1>
                 </header>
                 <main class="${styles.main}">
                     <products-list></products-list>
